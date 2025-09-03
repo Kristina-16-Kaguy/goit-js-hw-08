@@ -83,12 +83,13 @@ const pictures = images
 list.innerHTML = pictures;
 
 list.addEventListener("click", (event) => {
-  //   if (event.target === event.currentTarget) {
-  //     return;
-  //   }
   event.preventDefault();
 
   if (event.target.classList.contains("gallery-image")) {
-    console.log(event.target.dataset.source);
+    basicLightbox
+      .create(
+        `<img src="${event.target.dataset.source}" alt="${event.target.alt}">`
+      )
+      .show();
   }
 });
