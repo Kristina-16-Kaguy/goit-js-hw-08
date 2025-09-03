@@ -68,12 +68,13 @@ const list = document.querySelector(".gallery");
 
 const pictures = images
   .map(
-    (item) => `<li>
+    (item) => `<li class="gallery-item">
          <img src="${item.preview}" 
               data-source="${item.original}" 
-              alt="${item.description}">
+              alt="${item.description}"
+              class="gallery-image">
        </li>`
   )
   .join("");
 
-gallery.innerHTML = pictures;
+list.innerHTML = pictures;
