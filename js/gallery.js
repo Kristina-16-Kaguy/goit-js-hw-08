@@ -68,13 +68,27 @@ const list = document.querySelector(".gallery");
 
 const pictures = images
   .map(
-    (item) => `<li class="gallery-item">
-         <img src="${item.preview}" 
-              data-source="${item.original}" 
-              alt="${item.description}"
-              class="gallery-image">
-       </li>`
+    (item) =>
+      `<li class="gallery-item">
+            <a class="gallery-link" href="${item.original}">
+                <img src="${item.preview}" 
+                    data-source="${item.original}" 
+                    alt="${item.description}"
+                    class="gallery-image">
+            </a>
+        </li>`
   )
   .join("");
 
 list.innerHTML = pictures;
+
+list.addEventListener("click", (event) => {
+  //   if (event.target === event.currentTarget) {
+  //     return;
+  //   }
+  event.preventDefault();
+
+  if (event.target.classList.contains("gallery-image")) {
+    console.log(event.target.dataset.source);
+  }
+});
